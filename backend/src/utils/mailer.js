@@ -1,34 +1,34 @@
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 dotenv.config();
 
 // ===============================
-// 🚀 CONFIGURATION TRANSPORTEUR SMTP
+// 🚀 CONFIGURATION SMTP BREVO
 // ===============================
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT) || 587,
-  secure: false,
+  port: Number(process.env.SMTP_PORT),
+  secure: process.env.SMTP_SECURE === "true", // false pour port 587
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS
-  },
-  tls: {
-    rejectUnauthorized: false
   }
 });
 
-// Test SMTP
+// ===============================
+// 🔍 Vérifier connexion SMTP
+// ===============================
 transporter.verify()
-  .then(() => console.log("✅ Serveur email OK"))
+  .then(() => console.log("✅ SMTP connecté (Brevo OK)"))
   .catch(err => console.error("❌ Problème SMTP :", err));
 
 
 // ===============================================
-// 📩 EMAIL 1 : Confirmation de participation
+// 📩 EMAIL 1 : Confirmation participation
 // ===============================================
-export const sendConfirmationEmail = async ({ to, firstName,lastName }) => {
+export const sendConfirmationEmail = async ({ to, firstName, lastName }) => {
   try {
+
     const htmlContent = `
       <html>
       <body style="font-family:Arial;background:#f7f3ed;margin:0;padding:0;">
@@ -58,8 +58,7 @@ export const sendConfirmationEmail = async ({ to, firstName,lastName }) => {
       from: process.env.FROM_EMAIL,
       to,
       subject: "🎉 Merci pour votre participation",
-      html: htmlContent,
-      text: `Bonjour ${firstName} ${lastName} , merci pour votre participation.`
+      html: htmlContent
     });
 
     console.log("📧 Email participation envoyé →", to);
@@ -71,10 +70,11 @@ export const sendConfirmationEmail = async ({ to, firstName,lastName }) => {
 
 
 // ===============================================
-// 📩 EMAIL 2 : Demande de devis (NOUVEAU)
+// 📩 EMAIL 2 : Demande de devis
 // ===============================================
-export const sendQuoteEmail = async ({ to, firstName,lastName }) => {
+export const sendQuoteEmail = async ({ to, firstName, lastName }) => {
   try {
+
     const htmlContent = `
       <html>
       <body style="font-family:Arial;background:#f7f3ed;margin:0;padding:0;">
@@ -104,8 +104,7 @@ export const sendQuoteEmail = async ({ to, firstName,lastName }) => {
       from: process.env.FROM_EMAIL,
       to,
       subject: "📨 Votre demande de devis est bien reçue",
-      html: htmlContent,
-      text: `Bonjour ${firstName} ${lastName}, nous avons bien reçu votre demande de devis.`
+      html: htmlContent
     });
 
     console.log("📧 Email devis envoyé →", to);
@@ -121,6 +120,7 @@ export const sendQuoteEmail = async ({ to, firstName,lastName }) => {
 // ===============================================
 export const sendAdminNotification = async ({ participant }) => {
   try {
+
     const htmlContent = `
       <html>
       <body style="font-family:Arial;background:#fff;">
@@ -152,4 +152,5 @@ export const sendAdminNotification = async ({ participant }) => {
 };
 
 
+// Export du transporteur
 export default transporter;
