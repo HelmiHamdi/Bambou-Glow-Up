@@ -49,7 +49,7 @@ const ParticipateModal = ({ open, onClose }) => {
     if (file) {
       // Validation de l'image
       const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
-      const maxSize = 5 * 1024 * 1024; // 5MB
+      const maxSize = 10 * 1024 * 1024; // 5MB
 
       if (!allowedTypes.includes(file.type)) {
         setErrors(prev => ({
@@ -141,7 +141,7 @@ const ParticipateModal = ({ open, onClose }) => {
       
       // Ajouter l'image si elle existe
       if (image) {
-        submitData.append('image', image);
+        submitData.append('photo', image);
       }
 
       const response = await API.post('/participants', submitData, {

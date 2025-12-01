@@ -20,7 +20,7 @@ const upload = multer({
 });
 
 // Routes publiques
-router.post('/', upload.single('image'), createParticipant);
+router.post('/', upload.single('photo'), createParticipant);
 
 // Routes admin (protégées)
 router.get('/', adminAuth, getParticipants);
