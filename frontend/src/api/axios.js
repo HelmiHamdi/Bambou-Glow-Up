@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Configuration de base de l'API
 const API = axios.create({
-  baseURL: "http://localhost:5050/api",
+  baseURL: "https://bambou-glow-up-test.onrender.com/api",
 });
 
 
