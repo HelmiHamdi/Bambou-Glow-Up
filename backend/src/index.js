@@ -22,17 +22,17 @@ const __dirname = path.resolve();
 // 🔧 Middlewares globaux
 // --------------------------------------------------------
 
-
-
 // Cookies (pour tokens authentifiés)
 app.use(cookieParser());
 
 // CORS sécurisé
-app.use(cors({
-  origin: "*", // Autorise toutes les origines
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "*", // Autorise toutes les origines
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 // --------------------------------------------------------
 // 📌 Routes API
@@ -43,6 +43,17 @@ app.use("/api/partners", partnersRoutes);
 app.use("/api/upload", uploadRoute);
 app.use("/api/quotes", quoteRoutes);
 
+
+
+// --------------------------------------------------------
+// 🏭 Production Mode (Vite/React)
+// --------------------------------------------------------
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+  });
+}
 // Route test
 app.get("/api", (req, res) => {
   res.json({
@@ -50,19 +61,6 @@ app.get("/api", (req, res) => {
     version: "1.0.0",
   });
 });
-
-// --------------------------------------------------------
-// 🏭 Production Mode (Vite/React)
-// --------------------------------------------------------
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-  // Permet au routing frontend de fonctionner
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
-  });
-}
-
 // --------------------------------------------------------
 // 🚀 Démarrage serveur + connexion DB
 // --------------------------------------------------------
