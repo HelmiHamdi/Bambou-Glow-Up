@@ -40,7 +40,7 @@ export const sendConfirmationEmail = async ({ to, firstName, lastName }) => {
     <body style="font-family:Arial;background:#f7f3ed;margin:0;padding:0;">
       <div style="max-width:600px;margin:auto;background:#fff;border-radius:10px;overflow:hidden;">
         <div style="background:#1F4D3E;color:#fff;padding:25px;text-align:center;">
-          <h2 style="margin:0;">Bambou Glow Up</h2>
+          <h2 style="margin:0;">Bambou Glow </h2>
         </div>
         <div style="padding:25px;color:#333;">
           <h3>Bonjour ${firstName} ${lastName}</h3>
@@ -49,7 +49,7 @@ export const sendConfirmationEmail = async ({ to, firstName, lastName }) => {
           <p style="margin-top:30px;">Cordialement,<br>L’équipe Bambou</p>
         </div>
         <div style="background:#eee;text-align:center;padding:15px;font-size:13px;color:#666;">
-          © ${new Date().getFullYear()} Bambou Glow Up
+          © ${new Date().getFullYear()} Bambou Glow 
         </div>
       </div>
     </body>
