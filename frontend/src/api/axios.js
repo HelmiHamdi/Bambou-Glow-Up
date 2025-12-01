@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Configuration de base de l'API
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE,
+  baseURL: "https://bambou-glow-up.onrender.com/api",
   timeout: 20000,
   // PAS de headers par défaut, on les laisse gérés par axios
 });

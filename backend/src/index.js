@@ -1,5 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import path from "path";
+
 import { connectDB } from "./config/db.js";
 
 import authRoutes from "./routes/auth.js";
@@ -7,45 +11,64 @@ import participantsRoutes from "./routes/participants.js";
 import partnersRoutes from "./routes/partners.js";
 import uploadRoute from "./routes/upload.js";
 import quoteRoutes from "./routes/quoteRoutes.js";
-import corsMiddleware from "./middleware/cors.js";
-import path from "path";
-
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
+// --------------------------------------------------------
+// 🔧 Middlewares globaux
+// --------------------------------------------------------
 
-// --- Middlewares globaux ---
-app.use(corsMiddleware);
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Body parser avec limite élevée (images base64, fichiers…)
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-// --- Routes API ---
+// Cookies (pour tokens authentifiés)
+app.use(cookieParser());
+
+// CORS sécurisé
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
+// --------------------------------------------------------
+// 📌 Routes API
+// --------------------------------------------------------
 app.use("/api/auth", authRoutes);
 app.use("/api/participants", participantsRoutes);
 app.use("/api/partners", partnersRoutes);
 app.use("/api/upload", uploadRoute);
 app.use("/api/quotes", quoteRoutes);
-// --- Route racine test API ---
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-  // Capture toutes les autres routes et renvoie index.html (pour permettre le routage frontend)
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
-  });
-}
+// Route test
 app.get("/api", (req, res) => {
   res.json({
     message: "🌿 Bambou Glow Up API is running!",
-    version: "1.0.0"
+    version: "1.0.0",
   });
 });
 
+// --------------------------------------------------------
+// 🏭 Production Mode (Vite/React)
+// --------------------------------------------------------
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  // Permet au routing frontend de fonctionner
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+  });
+}
+
+// --------------------------------------------------------
+// 🚀 Démarrage serveur + connexion DB
+// --------------------------------------------------------
 app.listen(PORT, () => {
   console.log(`🚀 Serveur démarré sur le port ${PORT}`);
   connectDB();
