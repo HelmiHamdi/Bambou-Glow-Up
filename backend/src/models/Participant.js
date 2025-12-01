@@ -77,7 +77,6 @@ ParticipantSchema.pre('save', function(next) {
 });
 
 // Index pour les recherches
-ParticipantSchema.index({ email: 1 });
 ParticipantSchema.index({ createdAt: -1 });
 ParticipantSchema.index({ selected: 1 });
 ParticipantSchema.index({ status: 1 });

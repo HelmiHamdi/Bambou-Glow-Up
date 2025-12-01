@@ -114,7 +114,7 @@ const Home = () => {
               {/* Image en premier sur mobile, à droite sur desktop */}
               <div className="order-1 lg:order-2 flex justify-center">
                 <img
-                  src="/src/assets/femme0.png"
+                  src={img1}
                   alt="Glow Up"
                   className="w-full max-w-2xl object-cover" 
                 />
