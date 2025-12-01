@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
+
 import cors from "cors";
 import path from "path";
-import { fileURLToPath } from "url";
 
 import { connectDB } from "./config/db.js";
 
@@ -14,45 +14,59 @@ import quoteRoutes from "./routes/quoteRoutes.js";
 
 dotenv.config();
 
-// Fix ESM dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 const app = express();
 const PORT = process.env.PORT || 5000;
+const __dirname = path.resolve();
 
-// Middlewares
+// --------------------------------------------------------
+// 🔧 Middlewares globaux
+// --------------------------------------------------------
+
+
+
+// Cookies (pour tokens authentifiés)
+app.use(cookieParser());
+
+// CORS sécurisé
 app.use(cors({
-  origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: "*", // Autorise toutes les origines
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
-
-app.use(express.json({ limit: "10mb" }));
-
-// Routes API
+app.use(express.json());
+// --------------------------------------------------------
+// 📌 Routes API
+// --------------------------------------------------------
 app.use("/api/auth", authRoutes);
 app.use("/api/participants", participantsRoutes);
 app.use("/api/partners", partnersRoutes);
 app.use("/api/upload", uploadRoute);
 app.use("/api/quotes", quoteRoutes);
 
+// Route test
 app.get("/api", (req, res) => {
-  res.json({ message: "🌿 API running", version: "1.0.0" });
+  res.json({
+    message: "🌿 Bambou Glow Up API is running!",
+    version: "1.0.0",
+  });
 });
 
-// Serve frontend
+// --------------------------------------------------------
+// 🏭 Production Mode (Vite/React)
+// --------------------------------------------------------
 if (process.env.NODE_ENV === "production") {
-  const distPath = path.join(__dirname, "../frontend/dist");
-  app.use(express.static(distPath));
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
+  // Permet au routing frontend de fonctionner
   app.get("*", (req, res) => {
-    res.sendFile(path.join(distPath, "index.html"));
+    res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
   });
 }
 
-// Start server
+// --------------------------------------------------------
+// 🚀 Démarrage serveur + connexion DB
+// --------------------------------------------------------
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🚀 Serveur démarré sur le port ${PORT}`);
   connectDB();
 });
