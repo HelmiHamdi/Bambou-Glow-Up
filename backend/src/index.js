@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import cookieParser from "cookie-parser";
+
 import cors from "cors";
 import path from "path";
 
@@ -22,21 +22,17 @@ const __dirname = path.resolve();
 // 🔧 Middlewares globaux
 // --------------------------------------------------------
 
-// Body parser avec limite élevée (images base64, fichiers…)
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-// Cookies (pour tokens authentifiés)
-app.use(cookieParser());
+
+
 
 // CORS sécurisé
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
-
+app.use(cors({
+  origin: "*", // Autorise toutes les origines
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+app.use(express.json());
 // --------------------------------------------------------
 // 📌 Routes API
 // --------------------------------------------------------
