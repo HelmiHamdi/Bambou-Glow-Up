@@ -44,7 +44,7 @@ const AdminLogin = () => {
             Espace Admin
           </h2>
           <p className="text-primary-100 text-lg font-medium">
-            Bambou Glow Up - Administration
+            Bambou Glow  - Administration
           </p>
         </div>
 

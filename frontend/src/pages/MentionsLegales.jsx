@@ -8,7 +8,7 @@ const MentionsLegales = () => {
       icon: "🏢",
       title: "Éditeur du site",
       details: [
-        { label: "Société", value: "Bambou Glow Up" },
+        { label: "Société", value: "Bambou Glow " },
         { label: "Forme juridique", value: "SARL au capital de 50 000 TND" },
         { label: "Adresse", value: "Rue du Commerce, 1002 Tunis, Tunisia" },
         { label: "Téléphone", value: "+216 12 345 678" },
@@ -57,7 +57,7 @@ const MentionsLegales = () => {
                 Mentions <span className="text-[#2E6653]">Légales</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Transparence et conformité légale de Bambou Glow Up
+                Transparence et conformité légale de Bambou Glow 
               </p>
               <div className="flex justify-center space-x-4">
                 <div className="w-3 h-3 bg-[#0F5B4F] rounded-full animate-bounce"></div>
@@ -151,7 +151,7 @@ const MentionsLegales = () => {
                   Engagement & Transparence
                 </h3>
                 <p className="text-xl opacity-90 leading-relaxed mb-8">
-                  Chez Bambou Glow Up, nous nous engageons à respecter scrupuleusement 
+                  Chez Bambou Glow , nous nous engageons à respecter scrupuleusement 
                   toutes les obligations légales et à garantir la protection de vos données 
                   dans le strict respect des lois tunisiennes.
                 </p>

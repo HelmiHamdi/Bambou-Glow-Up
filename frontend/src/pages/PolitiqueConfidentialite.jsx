@@ -7,7 +7,7 @@ const PolitiqueConfidentialite = () => {
     {
       icon: "🔒",
       title: "Introduction",
-      description: "Bambou Glow Up s'engage à protéger la vie privée de ses utilisateurs. Cette politique explique comment nous collectons, utilisons et protégeons vos informations personnelles.",
+      description: "Bambou Glow  s'engage à protéger la vie privée de ses utilisateurs. Cette politique explique comment nous collectons, utilisons et protégeons vos informations personnelles.",
       gradient: "linear-gradient(135deg, #0F5B4F 0%, #1F4D3E 100%)"
     },
     {

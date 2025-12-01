@@ -74,7 +74,7 @@ const Partners = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Nos Experts <span className="text-accent-300">Partenaires</span>
+                <span className="text-accent-300"> Nos Experts</span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-gray-100">
                 Découvrez l'équipe d'experts passionnés qui rendent les transformations possibles

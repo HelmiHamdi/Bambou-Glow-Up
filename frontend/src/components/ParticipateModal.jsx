@@ -281,7 +281,7 @@ const ParticipateModal = ({ open, onClose }) => {
           <p className="text-primary-100 mt-2 text-sm sm:text-base">
             {success 
               ? 'Votre participation a été enregistrée avec succès !' 
-              : 'Rejoignez l\'aventure Bambou Glow Up'
+              : 'Rejoignez l\'aventure Bambou Glow '
             }
           </p>
         </div>

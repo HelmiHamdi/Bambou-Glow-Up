@@ -11,7 +11,7 @@ const ConditionsUtilisation = () => {
         </svg>
       ),
       title: "Acceptation des conditions",
-      content: "L'utilisation du site Bambou Glow Up implique l'acceptation pleine et entière des conditions générales d'utilisation ci-après décrites.",
+      content: "L'utilisation du site Bambou Glow  implique l'acceptation pleine et entière des conditions générales d'utilisation ci-après décrites.",
       color: "from-[#0F5B4F] to-[#1F4D3E]"
     },
     {
@@ -52,7 +52,7 @@ const ConditionsUtilisation = () => {
         </svg>
       ),
       title: "Propriété des contenus",
-      content: "En participant au programme, vous acceptez que Bambou Glow Up utilise vos photos et témoignages à des fins promotionnelles.",
+      content: "En participant au programme, vous acceptez que Bambou Glow  utilise vos photos et témoignages à des fins promotionnelles.",
       color: "from-[#0F5B4F] to-[#2E6653]"
     }
   ];
@@ -86,7 +86,7 @@ const ConditionsUtilisation = () => {
             {/* Introduction Card */}
             <div className="bg-white rounded-2xl shadow-lg p-8 mb-12 text-center border border-gray-100">
               <p className="text-xl text-gray-700 leading-relaxed">
-                Bienvenue chez <span className="font-bold text-[#0F5B4F]">Bambou Glow Up</span>. 
+                Bienvenue chez <span className="font-bold text-[#0F5B4F]">Bambou Glow </span>. 
                 En utilisant nos services, vous acceptez les conditions générales d'utilisation décrites ci-dessous.
               </p>
             </div>

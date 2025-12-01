@@ -65,7 +65,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-gray-300 mb-4">
-              Transformez votre histoire avec Bambou Glow Up. Une expérience de relooking complète pour révéler votre beauté intérieure.
+              Transformez votre histoire avec Bambou Glow . Une expérience de relooking complète pour révéler votre beauté intérieure.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => {
@@ -126,7 +126,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm text-center md:text-left">
-              © {currentYear} Bambou Glow Up. Tous droits réservés.
+              © {currentYear} Bambou Glow . Tous droits réservés.
             </p>
             <div className="flex items-center space-x-2 mt-4 md:mt-0">
               <span className="text-gray-400 text-sm flex items-center">
