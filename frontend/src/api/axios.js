@@ -1,8 +1,12 @@
 import axios from 'axios';
 
 // Configuration de base de l'API
+const API_BASE_URL = "https://bambou-glow-up-production.up.railway.app/api";
 const API = axios.create({
-  baseURL: "https://bambou-glow-up-production.up.railway.app/api",
+  baseURL:API_BASE_URL,
+    headers: {
+    "Content-Type": "application/json",
+    }
 });
 
 
