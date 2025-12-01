@@ -587,7 +587,7 @@ const QuoteModal = ({ open, onClose }) => {
           <p className="text-primary-100 mt-2">
             {success 
               ? 'Votre demande a été envoyée avec succès !' 
-              : 'Remplissez le formulaire pour recevoir votre devis personnalisé'
+              : 'Remplissez le formulaire'
             }
           </p>
         </div>
