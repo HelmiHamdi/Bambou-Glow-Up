@@ -36,7 +36,6 @@ const Footer = () => {
       title: 'Contact',
       links: [
         { label: 'contact@bambou.tn', href: 'mailto:contact@bambou.tn', icon: Mail },
-        { label: '+216 12 345 678', href: 'tel:+21612345678', icon: Phone },
         { label: 'Tunis, Tunisia', href: '#', icon: MapPin },
       ]
     }

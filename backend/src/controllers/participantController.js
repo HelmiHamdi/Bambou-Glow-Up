@@ -71,7 +71,7 @@ export const createParticipant = async (req, res) => {
     await participant.save();
 
     // Envoi de l'email de confirmation
-   /* try {
+    try {
       await sendConfirmationEmail({ 
         to: participant.email, 
         firstName: participant.firstName,
@@ -80,7 +80,7 @@ export const createParticipant = async (req, res) => {
     } catch (emailError) {
       console.error('Erreur envoi email:', emailError);
       // On ne bloque pas la réponse si l'email échoue
-    }*/
+    }
 
     res.status(201).json({
       success: true,
